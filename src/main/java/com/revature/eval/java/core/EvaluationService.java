@@ -13,10 +13,10 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public String reverse(String string) {
+	static String reverse(String string) {
 		char[] reversed = new char[string.length()];
 		for (int i = reversed.length - 1, j=0; i >= 0; i--, j++) {
-			reversed[j] = string.charAt(i);
+			reversed[j] += string.charAt(i);
 		}
 		return new String(reversed);
 	}
@@ -540,5 +540,9 @@ public class EvaluationService {
 		// TODO Write an implementation for this method declaration
 		return 0;
 	}
-
+public static void main(String[] args)
+{
+	System.out.println(reverse("example"));
+	
+}
 }
