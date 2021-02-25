@@ -358,7 +358,7 @@ public class EvaluationService {
 		int sum = 0, a, num;
 		for (num = input; input > 0; input /= 10) {
 			a = input % 10;
-			sum = (int) (sum + Math.pow(a, input/=10));
+			sum = (int) (sum + Math.pow(a, input /= 10));
 		}
 		if (sum == num) {
 			return true;
@@ -438,7 +438,24 @@ public class EvaluationService {
 	 */
 	public int calculateNthPrime(int i) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		int num = 1, count = 0, j;
+		while (count < i) {
+			num = num + 1;
+			for (j = 2; j <= num; j++) {
+				if (num % j == 0) {
+					break;
+				}
+			}
+			if (j == num) {
+				count = count + 1;
+			}
+
+		}
+		if(i<1)
+		{
+			throw new IllegalArgumentException();
+		}
+		return num;
 	}
 
 	/**
