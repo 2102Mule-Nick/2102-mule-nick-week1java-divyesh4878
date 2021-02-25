@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +32,12 @@ public class EvaluationService {
 	 */
 	public static String acronym(String phrase) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		String acr = "";
+		String words[] = phrase.split(" |-");
+		for (String str : words) {
+			acr = acr + str.charAt(0);
+		}
+		return acr.toUpperCase();
 	}
 
 	/**
@@ -380,7 +386,20 @@ public class EvaluationService {
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		List<Long> list = new ArrayList<>();
+		long i=2;
+		while(i<=l)
+		{
+		if(l%i==0)
+		{
+			list.add(i);
+			l = l/i;
+		}
+		else {
+			i++;
+		}
+		}
+		return list;
 	}
 
 	/**
@@ -451,8 +470,7 @@ public class EvaluationService {
 			}
 
 		}
-		if(i<1)
-		{
+		if (i < 1) {
 			throw new IllegalArgumentException();
 		}
 		return num;
@@ -549,6 +567,9 @@ public class EvaluationService {
 	 */
 	public boolean isPangram(String string) {
 		// TODO Write an implementation for this method declaration
+		for (int i = 0; i < string.length(); i++) {
+
+		}
 		return false;
 	}
 
