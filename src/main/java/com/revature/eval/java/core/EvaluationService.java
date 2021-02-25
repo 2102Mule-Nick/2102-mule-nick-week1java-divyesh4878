@@ -133,7 +133,68 @@ public class EvaluationService {
 	 */
 	public int getScrabbleScore(String string) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		int score = 0;
+		String newString = string.toLowerCase();
+
+		for (int i = 0; i < newString.length(); i++) {
+			switch (string.charAt(i)) {
+			case 'a':
+				score = score + 1;
+			case 'b':
+				score = score + 3;
+			case 'c':
+				score = score + 3;
+			case 'd':
+				score = score + 2;
+			case 'e':
+				score = score + 1;
+			case 'f':
+				score = score + 4;
+			case 'g':
+				score = score + 2;
+			case 'h':
+				score = score + 4;
+			case 'i':
+				score = score + 1;
+			case 'j':
+				score = score + 8;
+			case 'k':
+				score = score + 5;
+			case 'l':
+				score = score + 1;
+			case 'm':
+				score = score + 3;
+			case 'n':
+				score = score + 1;
+			case 'o':
+				score = score + 1;
+			case 'p':
+				score = score + 3;
+			case 'q':
+				score = score + 10;
+			case 'r':
+				score = score + 1;
+			case 's':
+				score = score + 1;
+			case 't':
+				score = score + 1;
+			case 'u':
+				score = score + 1;
+			case 'v':
+				score = score + 4;
+			case 'w':
+				score = score + 4;
+			case 'x':
+				score = score + 8;
+			case 'y':
+				score = score + 4;
+			case 'z':
+				score = score + 10;
+			default:
+				score = score + 0;
+			}
+		}
+		return score;
 	}
 
 	/**
@@ -169,7 +230,18 @@ public class EvaluationService {
 	 */
 	public String cleanPhoneNumber(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		String NewNumber = "";
+		for (int i = 0; i < string.length(); i++) {
+			if (Character.isDigit(string.charAt(i))) {
+				NewNumber = NewNumber + string.charAt(i);
+			}
+
+		}
+		if (NewNumber.length() != 10) {
+			throw new IllegalArgumentException();
+		}
+		return NewNumber;
+
 	}
 
 	/**
@@ -283,7 +355,17 @@ public class EvaluationService {
 	 */
 	public boolean isArmstrongNumber(int input) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		int sum = 0, a, num;
+		for (num = input; input > 0; input /= 10) {
+			a = input % 10;
+			sum = (int) (sum + Math.pow(a, input/=10));
+		}
+		if (sum == num) {
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	/**
