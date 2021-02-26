@@ -2,6 +2,7 @@ package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -262,6 +263,7 @@ public class EvaluationService {
 	public Map<String, Integer> wordCount(String string) {
 		// TODO Write an implementation for this method declaration
 		return null;
+
 	}
 
 	/**
@@ -387,17 +389,14 @@ public class EvaluationService {
 	public List<Long> calculatePrimeFactorsOf(long l) {
 		// TODO Write an implementation for this method declaration
 		List<Long> list = new ArrayList<>();
-		long i=2;
-		while(i<=l)
-		{
-		if(l%i==0)
-		{
-			list.add(i);
-			l = l/i;
-		}
-		else {
-			i++;
-		}
+		long i = 2;
+		while (i <= l) {
+			if (l % i == 0) {
+				list.add(i);
+				l = l / i;
+			} else {
+				i++;
+			}
 		}
 		return list;
 	}
@@ -438,7 +437,18 @@ public class EvaluationService {
 
 		public String rotate(String string) {
 			// TODO Write an implementation for this method declaration
-			return null;
+			StringBuilder s = new StringBuilder();
+			for (int i = 0; i < string.length(); i++) {
+				char ch = string.charAt(i);
+				if (ch >= 'A' && ch <= 'Z') {
+					s.append((char) ('A' + ((ch - 'A' + key) % 26)));
+				} else if (ch >= 'a' && ch <= 'z') {
+					s.append((char) ('a' + ((ch - 'a' + key) % 26)));
+				} else {
+					s.append(ch);
+				}
+			}
+			return s.toString();
 		}
 
 	}
@@ -549,7 +559,27 @@ public class EvaluationService {
 	 */
 	public boolean isValidIsbn(String string) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		int count = 0, sum = 0, checkSum = 0;
+		char checkDigit = string.charAt(string.length() - 1);
+		if ((checkDigit != 'X') && (!Character.isDigit(checkDigit))) {
+			return false;
+		}
+		for (int i = 0; i < string.length() - 1; i++) {
+			char ch = string.charAt(i);
+			if (Character.isDigit(ch)) {
+				sum += Character.getNumericValue(ch);
+				checkSum = checkSum + sum;
+				count++;
+			} else if (ch != '-') {
+				return false;
+			}
+		}
+		if (count == 9) {
+			checkSum = checkSum + (sum + (checkDigit == 'X' ? 10 : Character.getNumericValue(checkDigit)));
+		} else {
+			return false;
+		}
+		return (checkSum % 11 == 0);
 	}
 
 	/**
@@ -567,10 +597,28 @@ public class EvaluationService {
 	 */
 	public boolean isPangram(String string) {
 		// TODO Write an implementation for this method declaration
+		boolean[] b = new boolean[26];
 		for (int i = 0; i < string.length(); i++) {
-
+			int index = getIndex(string.charAt(i));
+			if (index >= 0 && index <= 26) {
+				b[index] = true;
+			}
 		}
-		return false;
+		for (int i = 0; i < b.length; i++) {
+			if (!b[i]) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private int getIndex(char ch) {
+		// TODO Auto-generated method stub
+		int index = ch - 'a';
+		if (index < 0) {
+			index += 32;
+		}
+		return index;
 	}
 
 	/**
@@ -583,6 +631,7 @@ public class EvaluationService {
 	 */
 	public Temporal getGigasecondDate(Temporal given) {
 		// TODO Write an implementation for this method declaration
+
 		return null;
 	}
 
@@ -601,7 +650,16 @@ public class EvaluationService {
 	 */
 	public int getSumOfMultiples(int i, int[] set) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		int sum = 0;
+		for (int j = 1; j < i; j++) {
+			for (int m : set) {
+				if (j % m == 0) {
+					sum = sum + j;
+					break;
+				}
+			}
+		}
+		return sum;
 	}
 
 	/**
@@ -642,7 +700,30 @@ public class EvaluationService {
 	 */
 	public boolean isLuhnValid(String string) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		int sum = 0;
+		boolean toDouble = false;
+		int digitCount = 0;
+		for (int i = string.length() - 1; i >= 0; i--) {
+			char ch = string.charAt(i);
+			if (ch != ' ' && !Character.isDigit(ch)) {
+				return false;
+			}
+			if (ch == ' ') {
+				continue;
+			}
+
+			digitCount++;
+			int digValue = Character.getNumericValue(ch);
+			if (toDouble) {
+				digValue = digValue * 2;
+				if (digValue > 9) {
+					digValue = digValue - 9;
+				}
+			}
+			sum = sum + digValue;
+			toDouble = !toDouble;
+		}
+		return (digitCount > 1 && sum % 10 == 0);
 	}
 
 	/**
