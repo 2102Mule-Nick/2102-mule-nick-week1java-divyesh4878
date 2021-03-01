@@ -144,61 +144,89 @@ public class EvaluationService {
 		String newString = string.toLowerCase();
 
 		for (int i = 0; i < newString.length(); i++) {
-			switch (string.charAt(i)) {
+			char alphabet= newString.charAt(i);
+			switch (alphabet) {
 			case 'a':
 				score = score + 1;
+				break;
 			case 'b':
 				score = score + 3;
+				break;
 			case 'c':
 				score = score + 3;
+				break;
 			case 'd':
 				score = score + 2;
+				break;
 			case 'e':
 				score = score + 1;
+				break;
 			case 'f':
 				score = score + 4;
+				break;
 			case 'g':
 				score = score + 2;
+				break;
 			case 'h':
 				score = score + 4;
+				break;
 			case 'i':
 				score = score + 1;
+				break;
 			case 'j':
 				score = score + 8;
+				break;
 			case 'k':
 				score = score + 5;
+				break;
 			case 'l':
 				score = score + 1;
+				break;
 			case 'm':
 				score = score + 3;
+				break;
 			case 'n':
 				score = score + 1;
+				break;
 			case 'o':
 				score = score + 1;
+				break;
 			case 'p':
 				score = score + 3;
+				break;
 			case 'q':
 				score = score + 10;
+				break;
 			case 'r':
 				score = score + 1;
+				break;
 			case 's':
 				score = score + 1;
+				break;
 			case 't':
 				score = score + 1;
+				break;
 			case 'u':
 				score = score + 1;
+				break;
 			case 'v':
 				score = score + 4;
+				break;
 			case 'w':
 				score = score + 4;
+				break;
 			case 'x':
 				score = score + 8;
+				break;
 			case 'y':
 				score = score + 4;
+				break;
 			case 'z':
 				score = score + 10;
+				break;
 			default:
 				score = score + 0;
+				break;
 			}
 		}
 		return score;
@@ -262,6 +290,7 @@ public class EvaluationService {
 	 */
 	public Map<String, Integer> wordCount(String string) {
 		// TODO Write an implementation for this method declaration
+		
 		return null;
 
 	}
